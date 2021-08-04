@@ -13,7 +13,7 @@ namespace StringCalculator
             if (numbers.Length == 1)
                 return int.Parse(numbers);
 
-            string[] delimeters = new[] { "," };
+            string[] delimeters = new[] { "\n", "," };
             string[] numbersArr = numbers.Split(delimeters, StringSplitOptions.None);
             foreach (string number in numbersArr)
             {

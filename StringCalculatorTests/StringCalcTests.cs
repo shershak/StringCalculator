@@ -69,5 +69,20 @@ namespace StringCalculatorTests
             Assert.AreEqual(expected, actual);
         }
         #endregion
+        #region Task 3
+        [Test]
+        public void Add_Input1and2and3WithNewLine_Return6()
+        {
+            // Arrange
+            string input = "1\n2,3";
+            int expected = 6;
+
+            // Act
+            int actual = Calc.Add(input);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+        #endregion
     }
 }

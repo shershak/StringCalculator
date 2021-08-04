@@ -120,5 +120,33 @@ namespace StringCalculatorTests
             Assert.Throws<Exception>(delegate { Calc.Add(input); });
         }
         #endregion
+        #region Task 6
+        [Test]
+        public void Add_Input2and1001_Return2()
+        {
+            // Arrange
+            string input = "1001,2";
+            int expected = 2;
+
+            // Act
+            int actual = Calc.Add(input);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [Test]
+        public void Add_Input2and1001WithSemicolonDelimiters_Return2()
+        {
+            // Arrange
+            string input = "//;\n1001;2";
+            int expected = 2;
+
+            // Act
+            int actual = Calc.Add(input);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+        #endregion
     }
 }

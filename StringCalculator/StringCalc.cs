@@ -36,7 +36,8 @@ namespace StringCalculator
 
                 foreach (string number in numArr)
                 {
-                    Sum += int.Parse(number);
+                    if (int.Parse(number) < 1000)
+                        Sum += int.Parse(number);
                 }
                 return Sum;
             }
@@ -45,7 +46,8 @@ namespace StringCalculator
             string[] numbersArr = numbers.Split(delimeters, StringSplitOptions.None);
             foreach (string number in numbersArr)
             {
-                Sum += int.Parse(number);
+                if (int.Parse(number) < 1000)
+                    Sum += int.Parse(number);
             }
             return Sum;
         }

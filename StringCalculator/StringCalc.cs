@@ -27,6 +27,22 @@ namespace StringCalculator
             if (numbers.Length == 1)
                 return int.Parse(numbers);
 
+            if (numbers.StartsWith('/') && numbers.Contains('[') && numbers.Contains(']'))
+            {
+                Regex regex = new Regex(@"\[.*\]");
+                Match match = regex.Match(numbers);
+
+                string delimiter = match.Value.TrimStart('[').TrimEnd(']');
+                string[] inputArr = numbers.Split("\n", StringSplitOptions.None);
+                string[] numArr = inputArr[1].Split(delimiter, StringSplitOptions.None);
+                foreach (string number in numArr)
+                {
+                    if (int.Parse(number) < 1000)
+                        Sum += int.Parse(number);
+                }
+                return Sum;
+            } 
+
             if (numbers.StartsWith('/'))
             {
                 string[] inputArr = numbers.Split(new string[] { "\n" }, StringSplitOptions.None);
@@ -44,6 +60,7 @@ namespace StringCalculator
 
             string[] delimeters = new[] { "\n", "," };
             string[] numbersArr = numbers.Split(delimeters, StringSplitOptions.None);
+
             foreach (string number in numbersArr)
             {
                 if (int.Parse(number) < 1000)

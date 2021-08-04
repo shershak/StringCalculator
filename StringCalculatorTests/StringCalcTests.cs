@@ -55,12 +55,12 @@ namespace StringCalculatorTests
             Assert.AreEqual(expected, actual);
         }
         #endregion
-        #region Task 2
-        [Test]
-        public void Add_Input1and2and3_Return6()
+        #region Task 2, 7
+        [TestCase("1,2,3")]
+        [TestCase("//[***]\n1***2***3")]
+        public void Add_Input1and2and3_Return6(string input)
         {
             // Arrange
-            string input = "1,2,3";
             int expected = 6;
 
             // Act
@@ -135,7 +135,7 @@ namespace StringCalculatorTests
             Assert.AreEqual(expected, actual);
         }
         [Test]
-        public void Add_Input2and1001WithSemicolonDelimiters_Return2()
+        public void Add_Input2and1001WithSemicolonDelimiter_Return2()
         {
             // Arrange
             string input = "//;\n1001;2";

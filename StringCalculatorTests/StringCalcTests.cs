@@ -84,5 +84,20 @@ namespace StringCalculatorTests
             Assert.AreEqual(expected, actual);
         }
         #endregion
+        #region Task 4
+        [Test]
+        public void Add_Input1and2WithSemicolonDelimiter_Return3()
+        {
+            // Arrange
+            string input = "//;\n1;2";
+            int expected = 3;
+
+            // Act
+            int actual = Calc.Add(input);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+        #endregion
     }
 }

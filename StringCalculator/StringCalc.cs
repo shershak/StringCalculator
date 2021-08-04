@@ -13,6 +13,20 @@ namespace StringCalculator
             if (numbers.Length == 1)
                 return int.Parse(numbers);
 
+            if (numbers.StartsWith('/'))
+            {
+                string[] inputArr = numbers.Split(new string[] { "\n" }, StringSplitOptions.None);
+
+                char delimiter = Convert.ToChar(inputArr[0].TrimStart('/'));
+                string[] numArr = inputArr[1].Split(delimiter);
+
+                foreach (string number in numArr)
+                {
+                    Sum += int.Parse(number);
+                }
+                return Sum;
+            }
+
             string[] delimeters = new[] { "\n", "," };
             string[] numbersArr = numbers.Split(delimeters, StringSplitOptions.None);
             foreach (string number in numbersArr)

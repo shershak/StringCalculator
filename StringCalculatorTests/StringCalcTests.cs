@@ -13,7 +13,7 @@ namespace StringCalculatorTests
         {
             Calc = new StringCalc();
         }
-
+        #region Task 1
         [Test]
         public void Add_EmptyString_Return0()
         {
@@ -53,5 +53,21 @@ namespace StringCalculatorTests
             // Assert
             Assert.AreEqual(expected, actual);
         }
+        #endregion
+        #region Task 2
+        [Test]
+        public void Add_Input1and2and3_Return6()
+        {
+            // Arrange
+            string input = "1,2,3";
+            int expected = 6;
+
+            // Act
+            int actual = Calc.Add(input);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+        #endregion
     }
 }

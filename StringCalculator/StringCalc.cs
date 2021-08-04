@@ -1,12 +1,26 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace StringCalculator
 {
     public class StringCalc
     {
         public int Sum { get; set; }
+        public string Message { get; set; }
         public int Add(string numbers)
         {
+            if (numbers.Contains('-'))
+            {
+                Regex regex = new Regex(@"-\d*");
+                MatchCollection matches = regex.Matches(numbers);
+                Message = "Negatives not allowed: ";
+                foreach (Match match in matches)
+                {
+                    Message += "[" + match.Value + "] ";
+                }
+                throw new Exception(Message);
+            }
+
             if (numbers == "")
                 return 0;
 
@@ -36,7 +50,8 @@ namespace StringCalculator
             return Sum;
         }
         static void Main()
-        {  
+        {
         }
+
     }
 }

@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using StringCalculator;
+using System;
 
 namespace StringCalculatorTests
 {
@@ -97,6 +98,26 @@ namespace StringCalculatorTests
 
             // Assert
             Assert.AreEqual(expected, actual);
+        }
+        #endregion
+        #region Task 5
+        [Test]
+        public void Add_InputNegative1_ReturnException()
+        {
+            // Arrange
+            string input = "-1";
+
+            // Assert
+            Assert.Throws<Exception>(delegate { Calc.Add(input); } );
+        }
+        [Test]
+        public void Add_InputMultipleNegative_ReturnException()
+        {
+            // Arrange
+            string input = "-1,-2,-3";
+
+            // Assert
+            Assert.Throws<Exception>(delegate { Calc.Add(input); });
         }
         #endregion
     }

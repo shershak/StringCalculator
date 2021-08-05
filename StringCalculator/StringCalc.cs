@@ -6,20 +6,20 @@ namespace StringCalculator
 {
     public class StringCalc
     {
-        public int Sum { get; set; }
-        public string Message { get; set; }
+        public int Result { get; set; }
+
         public int Add(string numbers)
         {
             if (numbers.Contains('-'))
             {
-                Regex regex = new Regex(@"-\d*");
-                MatchCollection matches = regex.Matches(numbers);
-                Message = "Negatives not allowed: ";
-                foreach (Match match in matches)
+                Regex regex = new Regex(@"(-\d*)");
+                string[] negativeNumbers = FindRegex(regex, numbers);
+                string message = "Negatives not allowed: ";
+                foreach (string number in negativeNumbers)
                 {
-                    Message += "[" + match.Value + "] ";
+                    message += "[" + number + "] ";
                 }
-                throw new Exception(Message);
+                throw new Exception(message);
             }
 
             if (numbers == "")
@@ -28,56 +28,47 @@ namespace StringCalculator
             if (numbers.Length == 1)
                 return int.Parse(numbers);
 
-            if (numbers.StartsWith('/') && numbers.Contains('[') && numbers.Contains(']'))
-            {
-                Regex regex = new Regex(@"\[(.*?)\]");
-                Match match = regex.Match(numbers);
-                List<string> delimitersList = new List<string>();
-                while (match.Success)
-                {
-                    delimitersList.Add(match.Groups[1].ToString());
-                    match = match.NextMatch();
-                }
-                string[] delimiters = delimitersList.ToArray();
-
-                string[] inputArr = numbers.Split("\n", StringSplitOptions.None);
-                string[] numArr = inputArr[1].Split(delimiters, StringSplitOptions.None);
-                foreach (string number in numArr)
-                {
-                    if (int.Parse(number) < 1000)
-                        Sum += int.Parse(number);
-                }
-                return Sum;
-            } 
-
             if (numbers.StartsWith('/'))
             {
-                string[] inputArr = numbers.Split(new string[] { "\n" }, StringSplitOptions.None);
-
-                char delimiter = Convert.ToChar(inputArr[0].TrimStart('/'));
-                string[] numArr = inputArr[1].Split(delimiter);
-
-                foreach (string number in numArr)
-                {
-                    if (int.Parse(number) < 1000)
-                        Sum += int.Parse(number);
-                }
-                return Sum;
+                Regex regex = new Regex(@"[[/]*(.*?)[]\n]");
+                string[] delimiters = FindRegex(regex, numbers);
+                string[] numbersArr = numbers.Split("\n", StringSplitOptions.None)[1]
+                                             .Split(delimiters, StringSplitOptions.None);
+                return Sum(numbersArr);
             }
 
-            string[] delimeters = new[] { "\n", "," };
-            string[] numbersArr = numbers.Split(delimeters, StringSplitOptions.None);
+            if (numbers.Contains("\n") || numbers.Contains(","))
+            {
+                string[] delimeters = new[] { "\n", "," };
+                string[] numbersArr = numbers.Split(delimeters, StringSplitOptions.None);
+                return Sum(numbersArr);
+            }
+            throw new ArgumentException("Incorrect values entered!");
 
+        }
+        public string[] FindRegex(Regex regex, string numbers)
+        {
+            Match match = regex.Match(numbers);
+            List<string> matchesList = new List<string>();
+            while (match.Success)
+            {
+                matchesList.Add(match.Groups[1].ToString());
+                match = match.NextMatch();
+            }
+            string[] matches = matchesList.ToArray();
+            return matches;
+        }
+        public int Sum(string[] numbersArr)
+        {
             foreach (string number in numbersArr)
             {
                 if (int.Parse(number) < 1000)
-                    Sum += int.Parse(number);
+                    Result += int.Parse(number);
             }
-            return Sum;
+            return Result;
         }
         static void Main()
         {
         }
-
     }
 }

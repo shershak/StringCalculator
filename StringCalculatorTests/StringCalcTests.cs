@@ -55,7 +55,7 @@ namespace StringCalculatorTests
             Assert.AreEqual(expected, actual);
         }
         #endregion
-        #region Task 2, 7, 8
+        #region Task 2, 7, 8, 9
         [TestCase("1,2,3")]
         [TestCase("//[***]\n1***2***3")]
         [TestCase("//[*][%]\n1*2%3")]

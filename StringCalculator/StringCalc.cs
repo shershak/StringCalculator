@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace StringCalculator
@@ -29,12 +30,18 @@ namespace StringCalculator
 
             if (numbers.StartsWith('/') && numbers.Contains('[') && numbers.Contains(']'))
             {
-                Regex regex = new Regex(@"\[.*\]");
+                Regex regex = new Regex(@"\[(.*?)\]");
                 Match match = regex.Match(numbers);
+                List<string> delimitersList = new List<string>();
+                while (match.Success)
+                {
+                    delimitersList.Add(match.Groups[1].ToString());
+                    match = match.NextMatch();
+                }
+                string[] delimiters = delimitersList.ToArray();
 
-                string delimiter = match.Value.TrimStart('[').TrimEnd(']');
                 string[] inputArr = numbers.Split("\n", StringSplitOptions.None);
-                string[] numArr = inputArr[1].Split(delimiter, StringSplitOptions.None);
+                string[] numArr = inputArr[1].Split(delimiters, StringSplitOptions.None);
                 foreach (string number in numArr)
                 {
                     if (int.Parse(number) < 1000)

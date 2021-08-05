@@ -59,6 +59,7 @@ namespace StringCalculatorTests
         [TestCase("1,2,3")]
         [TestCase("//[***]\n1***2***3")]
         [TestCase("//[*][%]\n1*2%3")]
+        [TestCase("//[***][%%%]\n1***2%%%3")]
         public void Add_Input1and2and3_Return6(string input)
         {
             // Arrange

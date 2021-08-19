@@ -57,6 +57,7 @@ namespace StringCalculator
             Regex regex = new Regex(@"(-\d*)");
             return FindRegex(regex, numbers);
         }
+
         private void ShowNegativeNumbers(string[] negativeNumbers)
         {
             string message = "Negatives not allowed: ";
@@ -66,6 +67,7 @@ namespace StringCalculator
             }
             throw new Exception(message);
         }
+
         private string[] FindRegex(Regex regex, string numbers)
         {
             Match match = regex.Match(numbers);
@@ -78,6 +80,7 @@ namespace StringCalculator
             string[] matches = matchesList.ToArray();
             return matches;
         }
+
         private int Sum(string[] numbersArr)
         {
             foreach (string number in numbersArr)
@@ -87,6 +90,7 @@ namespace StringCalculator
             }
             return Result;
         }
+
         static void Main()
         {
         }

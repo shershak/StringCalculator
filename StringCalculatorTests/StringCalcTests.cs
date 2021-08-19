@@ -14,111 +14,65 @@ namespace StringCalculatorTests
         {
             Calc = new StringCalc();
         }
+
         #region Task 1, 4
-        [Test]
-        public void Add_EmptyString_Return0()
+        [TestCase("", ExpectedResult = 0)]
+        public int Add_EmptyString_Return0(string input)
         {
-            // Arrange
-            string input = "";
-            int expected = 0;
-
-            // Act
-            int actual = Calc.Add(input);
-           
-            // Assert
-            Assert.AreEqual(expected, actual);
+            return Calc.Add(input);
         }
-        [Test]
-        public void Add_Input1_Return1()
+
+        [TestCase("1", ExpectedResult = 1)]
+        public int Add_Input1_Return1(string input)
         {
-            // Arrange
-            string input = "1";
-            int expected = 1;
-
-            // Act
-            int actual = Calc.Add(input);
-
-            // Assert
-            Assert.AreEqual(expected, actual);
+            return Calc.Add(input);
         }
-        [TestCase("1,2")]
-        [TestCase("//;\n1;2")]
-        public void Add_Input1and2_Return3(string input)
+
+        [TestCase("1,2", ExpectedResult = 3)]
+        [TestCase("//;\n1;2", ExpectedResult = 3)]
+        public int Add_Input1and2_Return3(string input)
         {
-            // Arrange
-            int expected = 3;
-
-            // Act
-            int actual = Calc.Add(input);
-
-            // Assert
-            Assert.AreEqual(expected, actual);
+            return Calc.Add(input);
         }
         #endregion
+
         #region Task 2, 3, 7, 8, 9
-        [TestCase("1,2,3")]
-        [TestCase("1\n2,3")]
-        [TestCase("//[***]\n1***2***3")]
-        [TestCase("//[*][%]\n1*2%3")]
-        [TestCase("//[***][%%%]\n1***2%%%3")]
-        public void Add_Input1and2and3_Return6(string input)
+        [TestCase("1,2,3", ExpectedResult = 6)]
+        [TestCase("1\n2,3", ExpectedResult = 6)]
+        [TestCase("//[***]\n1***2***3", ExpectedResult = 6)]
+        [TestCase("//[*][%]\n1*2%3", ExpectedResult = 6)]
+        [TestCase("//[***][%%%]\n1***2%%%3", ExpectedResult = 6)]
+        public int Add_Input1and2and3_Return6(string input)
         {
-            // Arrange
-            int expected = 6;
-
-            // Act
-            int actual = Calc.Add(input);
-
-            // Assert
-            Assert.AreEqual(expected, actual);
+            return Calc.Add(input);
         }
         #endregion
-        #region Task 5
-        [Test]
-        public void Add_InputNegative1_ReturnException()
-        {
-            // Arrange
-            string input = "-1";
 
-            // Assert
+        #region Task 5
+        [TestCase("-1")]
+        public void Add_InputNegative1_ReturnException(string input)
+        {
             Assert.Throws<Exception>(delegate { Calc.Add(input); } );
         }
-        [Test]
-        public void Add_InputMultipleNegative_ReturnException()
-        {
-            // Arrange
-            string input = "-1,-2,-3";
 
-            // Assert
+        [TestCase("-1,-2,-3")]
+        public void Add_InputMultipleNegative_ReturnException(string input)
+        {
             Assert.Throws<Exception>(delegate { Calc.Add(input); });
         }
         #endregion
+
         #region Task 6
-        [Test]
-        public void Add_Input2and1001_Return2()
+        [TestCase("1001,2", ExpectedResult = 2)]
+        public int Add_Input2and1001_Return2(string input)
         {
-            // Arrange
-            string input = "1001,2";
-            int expected = 2;
-
-            // Act
-            int actual = Calc.Add(input);
-
-            // Assert
-            Assert.AreEqual(expected, actual);
+            return Calc.Add(input);
         }
-        [Test]
-        public void Add_Input2and1001WithSemicolonDelimiter_Return2()
+
+        [TestCase("//;\n1001;2", ExpectedResult = 2)]
+        public int Add_Input2and1001WithSemicolonDelimiter_Return2(string input)
         {
-            // Arrange
-            string input = "//;\n1001;2";
-            int expected = 2;
-
-            // Act
-            int actual = Calc.Add(input);
-
-            // Assert
-            Assert.AreEqual(expected, actual);
+            return Calc.Add(input);
         }
         #endregion
     }

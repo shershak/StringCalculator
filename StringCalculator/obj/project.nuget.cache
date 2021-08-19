@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5AsTo6p51bv+cPkH6j7FAzZn11xVu9gOswBbNtWC7UStXf5b46DTX3LL5/6WFmSggHUSQwje/CA759S9ZYy5/g==",
+  "dgSpecHash": "6U2cc9ZqUIEKDkjtfQ5gQ74XkAuu8VqQMM4N46uUBwqKjrMd+Yv9xKyelAEXNhjcHuDbCyNoBGuZh9B/1+c7ug==",
   "success": true,
-  "projectFilePath": "C:\\VS\\Calc\\StringCalculator\\StringCalculator.csproj",
+  "projectFilePath": "C:\\VS\\StringCalculator\\StringCalculator\\StringCalculator.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

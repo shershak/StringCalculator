@@ -4974,11 +4974,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\VS\\Calc\\StringCalculatorTests\\StringCalculatorTests.csproj",
+      "projectUniqueName": "C:\\VS\\StringCalculator\\StringCalculatorTests\\StringCalculatorTests.csproj",
       "projectName": "StringCalculatorTests",
-      "projectPath": "C:\\VS\\Calc\\StringCalculatorTests\\StringCalculatorTests.csproj",
+      "projectPath": "C:\\VS\\StringCalculator\\StringCalculatorTests\\StringCalculatorTests.csproj",
       "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\VS\\Calc\\StringCalculatorTests\\obj\\",
+      "outputPath": "C:\\VS\\StringCalculator\\StringCalculatorTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4995,8 +4995,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\VS\\Calc\\StringCalculator\\StringCalculator.csproj": {
-              "projectPath": "C:\\VS\\Calc\\StringCalculator\\StringCalculator.csproj"
+            "C:\\VS\\StringCalculator\\StringCalculator\\StringCalculator.csproj": {
+              "projectPath": "C:\\VS\\StringCalculator\\StringCalculator\\StringCalculator.csproj"
             }
           }
         }
@@ -5043,7 +5043,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
